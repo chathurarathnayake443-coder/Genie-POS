@@ -6,6 +6,7 @@
     <style>
         body{
             overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
         }
         header{
             background-color: white;
@@ -21,20 +22,30 @@
         }
         #circle{
             position: absolute;
-            right: -100px;
-            bottom: 250px;
+            right: -150px;
+            top: -100px;
             transform: rotate(-20deg);
         }
         #form{
             background-color: rgb(242, 242, 242);
             border-radius: 30px;
-            left: 55%;
-            bottom: 20%;
+            left: 800px;
+            top: 200px;
             width: 500px;
         }
         #what-we{
             color: #3A48B1;
             margin-top: 150px;
+        }
+        .div{
+            width: 400px;
+            height: 300px;
+            background-color: #FAFAFA;
+            border-radius: 30px;
+        }
+        main{
+            position: relative;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -117,6 +128,23 @@
         Items and Orders in the way You Want</p>
 
     <p id="what-we" class="lead display-1 fw-bold text-center">What We Offer?</p>
+    <div class="container-lg mt-5 d-flex justify-content-around">
+        <div class="div d-flex flex-column align-items-center justify-content-around text-center shadow-sm">
+            <img src="assets/images/customer.png" alt="customer" width="100px">
+            <p class="lead text-secondary">Manage All Your Customers in<br>
+                Your Business</p>
+        </div>
+        <div class="div d-flex flex-column align-items-center justify-content-around text-center shadow-sm">
+            <img src="assets/images/item.png" alt="customer" width="100px">
+            <p class="lead text-secondary">Organize the Item Store<br>
+                in a ProperWay</p>
+        </div>
+        <div class="div d-flex flex-column align-items-center justify-content-around text-center shadow-sm">
+            <img src="assets/images/order.png" alt="customer" width="100px">
+            <p class="lead text-secondary">Track All Your Orders<br>
+                with the Order History of Past<br> Data</p>
+        </div>
+    </div>
 </main>
 <footer>
 
