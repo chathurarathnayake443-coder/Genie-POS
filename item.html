@@ -86,7 +86,7 @@
             <img src="assets/gifs/items.gif" alt="items.gif" width="90%" class="mt-5">
             <p class="lead text-secondary mt-5 text-center display-6">Laptops, Mobile Phones and Any Other Computer Accessories...</p>
         </div>
-        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5">
+        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-1">
             <p class="lead fw-bold text-black text-center">Item Form</p>
             <div class="mb-3">
                 <label for="item_id_input" class="form-label">Item ID</label>
@@ -112,7 +112,7 @@
                 <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
                 <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
                 <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
-                <button type="button" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
+                <button type="reset" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
             </div>
         </form>
 
@@ -196,8 +196,13 @@
         })
     }
 
-
-
+    // item form reset
+    $('#item_reset_btn').on('click', function () {
+        $('#item_id_input').val("");
+        $('#item_name_input').val("");
+        $('#item_price_input').val("");
+        $('#item_qty_input').val("");
+    })
 
 
 </script>
