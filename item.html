@@ -80,36 +80,43 @@
         </div>
     </nav>
 </header>
-<main>
-    <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5">
-        <p class="lead fw-bold text-black text-center">Item Form</p>
-        <div class="mb-3">
-            <label for="item_id_input" class="form-label">Item ID</label>
-            <input type="number" class="form-control" id="item_id_input">
+<section>
+    <div id="form-cont" class="row d-flex justify-content-around p-5">
+        <div class="col-8 col-md-7">
+            <img src="assets/gifs/items.gif" alt="items.gif" width="90%" class="mt-5">
+            <p class="lead text-secondary mt-5 text-center display-6">Laptops, Mobile Phones and Any Other Computer Accessories...</p>
         </div>
-        <div class="mb-3">
-            <label for="item_name_input" class="form-label">Name</label>
-            <input type="text" class="form-control" id="item_name_input">
-        </div>
-        <div class="mb-3">
-            <label for="item_price_input" class="form-label">Unit Price</label>
-            <input type="text" class="form-control" id="item_price_input">
-        </div>
-        <div class="mb-3">
-            <label for="item_qty_input" class="form-label">Quantity</label>
-            <input type="text" class="form-control" id="item_qty_input">
-        </div>
-        <div class="mb-3">
-            <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>
-            <input type="file" class="form-control" id="item_image_input" accept="image/*">
-        </div>
-        <div class="d-flex justify-content-center mt-5">
-            <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
-            <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
-            <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
-            <button type="button" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
-        </div>
-    </form>
+        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5">
+            <p class="lead fw-bold text-black text-center">Item Form</p>
+            <div class="mb-3">
+                <label for="item_id_input" class="form-label">Item ID</label>
+                <input type="number" class="form-control" id="item_id_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_name_input" class="form-label">Name</label>
+                <input type="text" class="form-control" id="item_name_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_price_input" class="form-label">Unit Price</label>
+                <input type="text" class="form-control" id="item_price_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_qty_input" class="form-label">Quantity</label>
+                <input type="text" class="form-control" id="item_qty_input">
+            </div>
+            <div class="mb-3">
+                <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>
+                <input type="file" class="form-control" id="item_image_input" accept="image/*">
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
+                <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
+                <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
+                <button type="button" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
+            </div>
+        </form>
+
+    </div>
 
     <div id="card-div" class="mt-5 mb-5 mx-auto p-5">
         <h2 class="display-6 fw-bold">Items</h2>
@@ -118,7 +125,7 @@
         </div>
     </div>
 
-</main>
+</section>
 <footer>
     <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
         <div class="container-xxl">
@@ -188,6 +195,8 @@
             $('#card-cont').append(newCard);
         })
     }
+
+
 
 
 
