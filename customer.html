@@ -74,7 +74,7 @@
         </div>
     </nav>
 </header>
-<main>
+<section>
     <div id="form-cont" class="row d-flex justify-content-around p-5">
         <div class="col-8 col-md-7">
             <img src="assets/gifs/customer.gif" alt="customer-gif" width="90%" class="mt-5">
@@ -125,7 +125,7 @@
         </table>
     </div>
 
-</main>
+</section>
 <footer>
     <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
         <div class="container-xxl">
@@ -224,7 +224,7 @@
 
     // get customer data by id
     const getCustomerDataById = (id) => {
-        return customer_db_array.findIndex((item,index) => item.id == id);
+        return customer_db_array.find((item,index) => item.id == id);
     }
 
     // load customer data
