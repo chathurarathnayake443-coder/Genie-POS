@@ -107,6 +107,7 @@
             <div class="mb-3">
                 <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>
                 <input type="file" class="form-control" id="item_image_input" accept="image/*">
+                <img id="item_image_preview" src="" alt="preview" class="mt-2 rounded d-none" style="height:80px; object-fit:cover;">
             </div>
             <div class="d-flex justify-content-center mt-5">
                 <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
@@ -157,7 +158,7 @@
         let reader = new FileReader();
         reader.readAsDataURL(item_image);
 
-        (item_id == '')? alert('ID Missing') : (item_name == '')? alert('Name Missing') : (item_price == '')? alert('Price Missing') : (item_qty == '')? alert('Quantity Missing') : reader.onload = function () {              // ✅ wait for load
+        (item_id == '')? alert('ID Missing') : (item_name == '')? alert('Name Missing') : (item_price == '')? alert('Price Missing') : (item_qty == '')? alert('Quantity Missing') : reader.onload = function () {
             let base64Image = reader.result;
             addToItems(item_id, item_name, item_price, item_qty, base64Image);
         };
@@ -175,6 +176,7 @@
 
         item_db_array.push(item);
         loadItemCards();
+        $('#item_reset_btn').trigger('click');
     }
 
     const loadItemCards = () => {
@@ -182,7 +184,7 @@
 
         item_db_array.map((item,index) => {
             let newCard = `
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;" data-id="${item.id}">
                 <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">${item.id}</div>
                 <img src="${item.image}" class="card-img-top mt-3" alt="...">
                 <div class="card-body text-center">
@@ -202,7 +204,65 @@
         $('#item_name_input').val("");
         $('#item_price_input').val("");
         $('#item_qty_input').val("");
+        $('#item_image_preview').attr('src', '').addClass('d-none');
     })
+
+    // load item details
+    $('#card-cont').on('click','.card',function () {
+        let id = $(this).data('id');
+        let card = item_db_array.find(item => item.id == id);
+
+        $('#item_id_input').val(card.id);
+        $('#item_name_input').val(card.name);
+        $('#item_price_input').val(card.price);
+        $('#item_qty_input').val(card.qty);
+        $('#item_image_preview').attr('src', card.image).removeClass('d-none');
+    })
+
+    //item update
+    $('#item_update_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
+        let item_name = $('#item_name_input').val();
+        let item_price = $('#item_price_input').val();
+        let item_qty = $('#item_qty_input').val();
+        let item_image = $('#item_image_input')[0].files[0];
+
+        if (item_id == '') return alert('ID Missing');
+        if (item_name == '') return alert('Name Missing');
+        if (item_price == '') return alert('Price Missing');
+        if (item_qty == '') return alert('Quantity Missing');
+
+        if (item_image) {
+            // new image selected
+            let reader = new FileReader();
+            reader.readAsDataURL(item_image);
+            reader.onload = function () {
+                updateItems(item_id, item_name, item_price, item_qty, reader.result);
+            }
+        } else {
+            // no new image — reuse existing
+            let existing = item_db_array.find(item => item.id == item_id);
+            if (!existing) return alert('Item Not Found');
+            updateItems(item_id, item_name, item_price, item_qty, existing.image);
+        }
+    })
+
+    const updateItems = (id,name,price,qty,image) => {
+        let card = item_db_array.find((item,index) => item.id == id);
+
+        if(card){
+            card.id = id;
+            card.name = name;
+            card.price = price;
+            card.qty = qty;
+            card.image = image;
+        }
+
+        loadItemCards();
+        $('#item_reset_btn').trigger('click');
+    }
+
+
 
 
 </script>
