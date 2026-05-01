@@ -24,13 +24,19 @@
         footer{
             background-color: rgb(242, 242, 242);
         }
-        #table-div{
-            padding: 2px;
+        #card-cont{
+            padding: 10px;
             position: relative;
             align-self: center;
             border: 2px solid black;
             border-radius: 30px;
             width: 90%;
+        }
+        #id-div{
+            background-color: black;
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -76,46 +82,40 @@
 </header>
 <main>
     <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5">
-        <p class="lead fw-bold text-black text-center">Customer Form</p>
+        <p class="lead fw-bold text-black text-center">Item Form</p>
         <div class="mb-3">
-            <label for="customer_id_input" class="form-label">ID</label>
-            <input type="number" class="form-control" id="customer_id_input">
+            <label for="item_id_input" class="form-label">Item ID</label>
+            <input type="number" class="form-control" id="item_id_input">
         </div>
         <div class="mb-3">
-            <label for="customer_name_input" class="form-label">Name</label>
-            <input type="text" class="form-control" id="customer_name_input">
+            <label for="item_name_input" class="form-label">Name</label>
+            <input type="text" class="form-control" id="item_name_input">
         </div>
         <div class="mb-3">
-            <label for="customer_phone_input" class="form-label">Contact Number</label>
-            <input type="text" class="form-control" id="customer_phone_input">
+            <label for="item_price_input" class="form-label">Unit Price</label>
+            <input type="text" class="form-control" id="item_price_input">
         </div>
         <div class="mb-3">
-            <label for="customer_address_input" class="form-label">Address</label>
-            <input type="text" class="form-control" id="customer_address_input">
+            <label for="item_qty_input" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="item_qty_input">
+        </div>
+        <div class="mb-3">
+            <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" id="item_image_input" accept="image/*">
         </div>
         <div class="d-flex justify-content-center mt-5">
-            <button type="button" id="customer_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
-            <button type="button" id="customer_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
-            <button type="button" id="customer_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
-            <button type="button" id="customer_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
+            <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
+            <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
+            <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
+            <button type="button" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
         </div>
     </form>
 
-    <div id="table-div" class="mt-5 mb-5 mx-auto p-5">
-        <h2 class="display-6 fw-bold">Customers</h2>
-        <table class="table table-hover mx-auto mt-5 border-rounded">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Address</th>
-            </tr>
-            </thead>
-            <tbody id="customer_tbody">
+    <div id="card-div" class="mt-5 mb-5 mx-auto p-5">
+        <h2 class="display-6 fw-bold">Items</h2>
+        <div id="card-cont" class="row justify-content-around ms-5">
 
-            </tbody>
-        </table>
+        </div>
     </div>
 
 </main>
@@ -136,6 +136,60 @@
 <script src="assets/lib/jquery-4.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
+    // item_db_array
+    let item_db_array = [];
+
+    // item save
+    $('#item_save_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
+        let item_name = $('#item_name_input').val();
+        let item_price = $('#item_price_input').val();
+        let item_qty = $('#item_qty_input').val();
+        let item_image = $('#item_image_input')[0].files[0];
+
+        let reader = new FileReader();
+        reader.readAsDataURL(item_image);
+
+        (item_id == '')? alert('ID Missing') : (item_name == '')? alert('Name Missing') : (item_price == '')? alert('Price Missing') : (item_qty == '')? alert('Quantity Missing') : reader.onload = function () {              // ✅ wait for load
+            let base64Image = reader.result;
+            addToItems(item_id, item_name, item_price, item_qty, base64Image);
+        };
+    })
+
+    const addToItems = (id,name,price,qty,image) => {
+
+        let item = {
+            id: id,
+            name: name,
+            price: price,
+            qty: qty,
+            image: image,
+        }
+
+        item_db_array.push(item);
+        loadItemCards();
+    }
+
+    const loadItemCards = () => {
+        $('#card-cont').empty();
+
+        item_db_array.map((item,index) => {
+            let newCard = `
+            <div class="card" style="width: 18rem;">
+                <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">${item.id}</div>
+                <img src="${item.image}" class="card-img-top mt-3" alt="...">
+                <div class="card-body text-center">
+                    <h3 class="card-title mt-3 mx-auto">${item.name}</h3>
+                    <h5 class="card-title mt-3 mx-auto">LKR. ${item.price} /=</h5>
+                    <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">${item.qty} In Stock</a>
+                </div>
+            </div>`;
+
+            $('#card-cont').append(newCard);
+        })
+    }
+
+
 
 </script>
 </body>
