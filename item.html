@@ -262,7 +262,27 @@
         $('#item_reset_btn').trigger('click');
     }
 
+    // item delete
+    $('#item_delete_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
 
+        if (item_id == '') return alert('ID Missing');
+        if (!(getItemDataById(item_id))) return alert('Item Not Found');
+
+        deleteItem(item_id);
+    })
+
+    const deleteItem = (id) => {
+        let index = item_db_array.findIndex(item => item.id == id);
+        item_db_array.splice(index, 1);
+        loadItemCards();
+        $('#item_reset_btn').trigger('click');
+    }
+
+    // get item data by id
+    const getItemDataById  = (id) => {
+        return item_db_array.find(item => item.id == id);
+    }
 
 
 </script>
