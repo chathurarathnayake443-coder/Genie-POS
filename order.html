@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="assets/images/genie.png">
+    <title>Genie - Orders</title>
+    <style>
+        body{
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+        }
+        header{
+            background-color: white;
+        }
+        #form{
+            background-color: rgb(242, 242, 242);
+            border-radius: 30px;
+            width: 500px;
+        }
+        main{
+            position: relative;
+            overflow: hidden;
+        }
+        footer{
+            background-color: rgb(242, 242, 242);
+        }
+        #card-cont{
+            padding: 10px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+        #id-div{
+            background-color: black;
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #table-div{
+            padding: 2px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+    </style>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Forum&family=Outfit:wght@100..900&family=Ovo&family=Petit+Formal+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<body class="pt-5">
+<header class="position-fixed top-0 start-0 end-0 z-3">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+        <div class="container-xxl">
+            <a href="#intro" class="navbar-brand">
+                <img src="assets/images/genie.png" width="50px" alt="Genie Logo">
+                <span class="fw-bold text-secondary">
+                Genie
+            </span>
+            </a>
+            <!--        toggle btn for mobile nav-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--        navbar links-->
+            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#manage" class="nav-link">DashBoard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#what-we" class="nav-link">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#what-we" class="nav-link">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Place Order</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section>
+    <div id="form-cont" class="row d-flex justify-content-around p-5">
+        <div class="col-8 col-md-7">
+            <img src="assets/gifs/payment.gif" alt="items.gif" width="90%" class="mt-5">
+            <p class="lead text-secondary mt-5 text-center display-6">Keep Your Orders in Track and the Current Assets in Your Control...</p>
+        </div>
+<!--        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-1">-->
+<!--            <p class="lead fw-bold text-black text-center">Item Form</p>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="item_id_input" class="form-label">Item ID</label>-->
+<!--                <input type="number" class="form-control" id="item_id_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="item_name_input" class="form-label">Name</label>-->
+<!--                <input type="text" class="form-control" id="item_name_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="item_price_input" class="form-label">Unit Price</label>-->
+<!--                <input type="text" class="form-control" id="item_price_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="item_qty_input" class="form-label">Quantity</label>-->
+<!--                <input type="text" class="form-control" id="item_qty_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>-->
+<!--                <input type="file" class="form-control" id="item_image_input" accept="image/*">-->
+<!--                <img id="item_image_preview" src="" alt="preview" class="mt-2 rounded d-none" style="height:80px; object-fit:cover;">-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-center mt-5">-->
+<!--                <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>-->
+<!--                <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>-->
+<!--                <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>-->
+<!--                <button type="reset" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>-->
+<!--            </div>-->
+<!--        </form>-->
+
+    </div>
+
+    <div id="table-div" class="mt-5 mb-5 mx-auto p-5">
+        <h2 class="display-6 fw-bold">Customers</h2>
+        <table class="table table-hover mx-auto mt-5 border-rounded">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody id="customer_tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<footer>
+    <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
+        <div class="container-xxl">
+            <span class="text-black">Genie V1.0.0</span>
+            <span class="text-secondary">© CSR .Inc @ 2026</span>
+            <span>
+                <span class="fw-bold text-black">
+                Developed By
+            </span>
+                <img src="assets/images/csr-logo.png" width="50px" alt="Genie Logo">
+            </span>
+        </div>
+    </nav>
+</footer>
+<script src="assets/lib/jquery-4.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+    // item_db_array
+    let item_db_array = [];
+
+    // item save
+    $('#item_save_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
+        let item_name = $('#item_name_input').val();
+        let item_price = $('#item_price_input').val();
+        let item_qty = $('#item_qty_input').val();
+        let item_image = $('#item_image_input')[0].files[0];
+
+        let reader = new FileReader();
+        reader.readAsDataURL(item_image);
+
+        (item_id == '')? alert('ID Missing') : (item_name == '')? alert('Name Missing') : (item_price == '')? alert('Price Missing') : (item_qty == '')? alert('Quantity Missing') : reader.onload = function () {
+            let base64Image = reader.result;
+            addToItems(item_id, item_name, item_price, item_qty, base64Image);
+        };
+    })
+
+    const addToItems = (id,name,price,qty,image) => {
+
+        let item = {
+            id: id,
+            name: name,
+            price: price,
+            qty: qty,
+            image: image,
+        }
+
+        item_db_array.push(item);
+        loadItemCards();
+        $('#item_reset_btn').trigger('click');
+    }
+
+    const loadItemCards = () => {
+        $('#card-cont').empty();
+
+        item_db_array.map((item,index) => {
+            let newCard = `
+            <div class="card" style="width: 18rem;" data-id="${item.id}">
+                <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">${item.id}</div>
+                <img src="${item.image}" class="card-img-top mt-3" alt="...">
+                <div class="card-body text-center">
+                    <h3 class="card-title mt-3 mx-auto">${item.name}</h3>
+                    <h5 class="card-title mt-3 mx-auto">LKR. ${item.price} /=</h5>
+                    <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">${item.qty} In Stock</a>
+                </div>
+            </div>`;
+
+            $('#card-cont').append(newCard);
+        })
+    }
+
+    // item form reset
+    $('#item_reset_btn').on('click', function () {
+        $('#item_id_input').val("");
+        $('#item_name_input').val("");
+        $('#item_price_input').val("");
+        $('#item_qty_input').val("");
+        $('#item_image_preview').attr('src', '').addClass('d-none');
+    })
+
+    // load item details
+    $('#card-cont').on('click','.card',function () {
+        let id = $(this).data('id');
+        let card = item_db_array.find(item => item.id == id);
+
+        $('#item_id_input').val(card.id);
+        $('#item_name_input').val(card.name);
+        $('#item_price_input').val(card.price);
+        $('#item_qty_input').val(card.qty);
+        $('#item_image_preview').attr('src', card.image).removeClass('d-none');
+    })
+
+    //item update
+    $('#item_update_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
+        let item_name = $('#item_name_input').val();
+        let item_price = $('#item_price_input').val();
+        let item_qty = $('#item_qty_input').val();
+        let item_image = $('#item_image_input')[0].files[0];
+
+        if (item_id == '') return alert('ID Missing');
+        if (item_name == '') return alert('Name Missing');
+        if (item_price == '') return alert('Price Missing');
+        if (item_qty == '') return alert('Quantity Missing');
+
+        if (item_image) {
+            // new image selected
+            let reader = new FileReader();
+            reader.readAsDataURL(item_image);
+            reader.onload = function () {
+                updateItems(item_id, item_name, item_price, item_qty, reader.result);
+            }
+        } else {
+            // no new image — reuse existing
+            let existing = item_db_array.find(item => item.id == item_id);
+            if (!existing) return alert('Item Not Found');
+            updateItems(item_id, item_name, item_price, item_qty, existing.image);
+        }
+    })
+
+    const updateItems = (id,name,price,qty,image) => {
+        let card = item_db_array.find((item,index) => item.id == id);
+
+        if(card){
+            card.id = id;
+            card.name = name;
+            card.price = price;
+            card.qty = qty;
+            card.image = image;
+        }
+
+        loadItemCards();
+        $('#item_reset_btn').trigger('click');
+    }
+
+    // item delete
+    $('#item_delete_btn').on('click', function () {
+        let item_id = $('#item_id_input').val();
+
+        if (item_id == '') return alert('ID Missing');
+        if (!(getItemDataById(item_id))) return alert('Item Not Found');
+
+        deleteItem(item_id);
+    })
+
+    const deleteItem = (id) => {
+        let index = item_db_array.findIndex(item => item.id == id);
+        item_db_array.splice(index, 1);
+        loadItemCards();
+        $('#item_reset_btn').trigger('click');
+    }
+
+    // get item data by id
+    const getItemDataById  = (id) => {
+        return item_db_array.find(item => item.id == id);
+    }
+
+
+</script>
+</body>
+</html>
