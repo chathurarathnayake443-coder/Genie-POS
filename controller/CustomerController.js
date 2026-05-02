@@ -57,3 +57,5 @@ $('#customer_reset_btn').on('click', function(){
     $('#customer_phone_input').val("");
     $('#customer_address_input').val("");
 })
+
+export {loadCustomerTable};
