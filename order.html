@@ -139,9 +139,66 @@
             </tr>
             </thead>
             <tbody id="customer_tbody">
-
+                <td>1</td>
+                <td>Chathura</td>
+                <td>0771234567</td>
+                <td>Kadawatha</td>
             </tbody>
         </table>
+    </div>
+
+    <div id="card-div" class="mt-5 mb-5 mx-auto p-5">
+        <h2 class="display-6 fw-bold ms-5">Items</h2>
+        <div id="card-cont" class="row justify-content-around ms-5">
+            <div class="card" style="width: 18rem;" data-id="${item.id}">
+                <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">1</div>
+                <img src="assets/images/mac-1.png" class="card-img-top mt-3" alt="...">
+                <div class="card-body text-center">
+                    <h3 class="card-title mt-3 mx-auto">MacBook Air</h3>
+                    <h5 class="card-title mt-3 mx-auto">LKR. 350000 /=</h5>
+                    <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">100 In Stock</a>
+                </div>
+                <div class="row d-flex justify-content-around">
+                    <div class="col d-flex justify-content-around">
+                        <div class="col-lg-5 mb-3 input-group align-items-center">
+                            <label for="order_qty_input" class="d-inline form-label me-2 order_qty_input">Qty</label>
+                            <input type="number" class="d-inline form-control me-4 order_qty_input" id="order_qty_input">
+                            <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 me-2 order_item_increase_btn">+</button>
+                            <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 order_item_decrease_btn">-</button>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary rounded ps-3 pe-3 ms-2 order_item_add_btn">Add</button>
+                        <button type="button" class="btn btn-warning rounded ps-3 pe-3 ms-2 order_item_reset_btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+                <div class="card" style="width: 18rem;" data-id="${item.id}">
+                    <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">1</div>
+                    <img src="assets/images/mac-1.png" class="card-img-top mt-3" alt="...">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mx-auto">MacBook Air</h3>
+                        <h5 class="card-title mt-3 mx-auto">LKR. 350000 /=</h5>
+                        <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">100 In Stock</a>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col d-flex justify-content-around">
+                            <div class="col-lg-5 mb-3 input-group align-items-center">
+                                <label for="order_qty_input" class="d-inline form-label me-2 order_qty_input">Qty</label>
+                                <input type="number" class="d-inline form-control me-4 order_qty_input">
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 me-2 order_item_increase_btn">+</button>
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 order_item_decrease_btn">-</button>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary rounded ps-3 pe-3 ms-2 order_item_add_btn">Add</button>
+                            <button type="button" class="btn btn-warning rounded ps-3 pe-3 ms-2 order_item_reset_btn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
     </div>
 
 </section>
@@ -162,146 +219,28 @@
 <script src="assets/lib/jquery-4.0.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
-    // item_db_array
-    let item_db_array = [];
+    // customer_db_array
+    let customer_db_array = [];
 
-    // item save
-    $('#item_save_btn').on('click', function () {
-        let item_id = $('#item_id_input').val();
-        let item_name = $('#item_name_input').val();
-        let item_price = $('#item_price_input').val();
-        let item_qty = $('#item_qty_input').val();
-        let item_image = $('#item_image_input')[0].files[0];
-
-        let reader = new FileReader();
-        reader.readAsDataURL(item_image);
-
-        (item_id == '')? alert('ID Missing') : (item_name == '')? alert('Name Missing') : (item_price == '')? alert('Price Missing') : (item_qty == '')? alert('Quantity Missing') : reader.onload = function () {
-            let base64Image = reader.result;
-            addToItems(item_id, item_name, item_price, item_qty, base64Image);
-        };
+    // increase / decrease buttons
+    // increase
+    $('.order_item_increase_btn').on('click', function () {
+        let qtyInput = $(this).closest('.card').find('.order_qty_input');
+        let currentVal = parseInt(qtyInput.val()) || 0;
+        qtyInput.val(currentVal + 1);
     })
 
-    const addToItems = (id,name,price,qty,image) => {
-
-        let item = {
-            id: id,
-            name: name,
-            price: price,
-            qty: qty,
-            image: image,
-        }
-
-        item_db_array.push(item);
-        loadItemCards();
-        $('#item_reset_btn').trigger('click');
-    }
-
-    const loadItemCards = () => {
-        $('#card-cont').empty();
-
-        item_db_array.map((item,index) => {
-            let newCard = `
-            <div class="card" style="width: 18rem;" data-id="${item.id}">
-                <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">${item.id}</div>
-                <img src="${item.image}" class="card-img-top mt-3" alt="...">
-                <div class="card-body text-center">
-                    <h3 class="card-title mt-3 mx-auto">${item.name}</h3>
-                    <h5 class="card-title mt-3 mx-auto">LKR. ${item.price} /=</h5>
-                    <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">${item.qty} In Stock</a>
-                </div>
-            </div>`;
-
-            $('#card-cont').append(newCard);
-        })
-    }
-
-    // item form reset
-    $('#item_reset_btn').on('click', function () {
-        $('#item_id_input').val("");
-        $('#item_name_input').val("");
-        $('#item_price_input').val("");
-        $('#item_qty_input').val("");
-        $('#item_image_preview').attr('src', '').addClass('d-none');
+    // decrease
+    $('.order_item_decrease_btn').on('click', function () {
+        let qtyInput = $(this).closest('.card').find('.order_qty_input');
+        let currentVal = parseInt(qtyInput.val()) || 0;
+        if (currentVal >= 1) qtyInput.val(currentVal - 1);
     })
 
-    // load item details
-    $('#card-cont').on('click','.card',function () {
-        let id = $(this).data('id');
-        let card = item_db_array.find(item => item.id == id);
-
-        $('#item_id_input').val(card.id);
-        $('#item_name_input').val(card.name);
-        $('#item_price_input').val(card.price);
-        $('#item_qty_input').val(card.qty);
-        $('#item_image_preview').attr('src', card.image).removeClass('d-none');
+    // reset
+    $('.order_item_reset_btn').on('click', function () {
+        $(this).closest('.card').find('.order_qty_input').val(0);
     })
-
-    //item update
-    $('#item_update_btn').on('click', function () {
-        let item_id = $('#item_id_input').val();
-        let item_name = $('#item_name_input').val();
-        let item_price = $('#item_price_input').val();
-        let item_qty = $('#item_qty_input').val();
-        let item_image = $('#item_image_input')[0].files[0];
-
-        if (item_id == '') return alert('ID Missing');
-        if (item_name == '') return alert('Name Missing');
-        if (item_price == '') return alert('Price Missing');
-        if (item_qty == '') return alert('Quantity Missing');
-
-        if (item_image) {
-            // new image selected
-            let reader = new FileReader();
-            reader.readAsDataURL(item_image);
-            reader.onload = function () {
-                updateItems(item_id, item_name, item_price, item_qty, reader.result);
-            }
-        } else {
-            // no new image — reuse existing
-            let existing = item_db_array.find(item => item.id == item_id);
-            if (!existing) return alert('Item Not Found');
-            updateItems(item_id, item_name, item_price, item_qty, existing.image);
-        }
-    })
-
-    const updateItems = (id,name,price,qty,image) => {
-        let card = item_db_array.find((item,index) => item.id == id);
-
-        if(card){
-            card.id = id;
-            card.name = name;
-            card.price = price;
-            card.qty = qty;
-            card.image = image;
-        }
-
-        loadItemCards();
-        $('#item_reset_btn').trigger('click');
-    }
-
-    // item delete
-    $('#item_delete_btn').on('click', function () {
-        let item_id = $('#item_id_input').val();
-
-        if (item_id == '') return alert('ID Missing');
-        if (!(getItemDataById(item_id))) return alert('Item Not Found');
-
-        deleteItem(item_id);
-    })
-
-    const deleteItem = (id) => {
-        let index = item_db_array.findIndex(item => item.id == id);
-        item_db_array.splice(index, 1);
-        loadItemCards();
-        $('#item_reset_btn').trigger('click');
-    }
-
-    // get item data by id
-    const getItemDataById  = (id) => {
-        return item_db_array.find(item => item.id == id);
-    }
-
 
 </script>
 </body>
