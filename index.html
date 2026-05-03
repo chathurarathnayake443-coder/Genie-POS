@@ -60,7 +60,7 @@
 
 <body class="pt-5">
     <header class="position-fixed top-0 start-0 end-0 z-3">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+        <nav id="login_navbar" class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container-xxl">
                 <a href="#intro" class="navbar-brand">
                     <img src="assets/images/genie.png" width="50px" alt="Genie Logo">
@@ -74,7 +74,7 @@
                 </button>
 
                 <!--        navbar links-->
-                <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+                <div class="collapse navbar-collapse justify-content-end align-center" id="login-main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a href="#manage" class="nav-link">Home</a>
@@ -92,8 +92,41 @@
                 </div>
             </div>
         </nav>
+
+        <nav id="dashboard_navbar" class="navbar navbar-expand-md navbar-light shadow-sm d-none">
+            <div class="container-xxl">
+                <a href="#intro" class="navbar-brand">
+                    <img src="assets/images/genie.png" width="50px" alt="Genie Logo">
+                    <span class="fw-bold text-secondary">
+                Genie
+            </span>
+                </a>
+                <!--        toggle btn for mobile nav-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--        navbar links-->
+                <div class="collapse navbar-collapse justify-content-end align-center" id="dashboard-main-nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#manage" class="nav-link">DashBoard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#what-we" class="nav-link">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#what-we" class="nav-link">Items</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Place Order</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-<main>
+<section id="login_content">
     <img id="circle" class="d-none d-md-none d-lg-block" src="assets/images/circle.png" alt="purple-circle" width="600px">
     <div class="ms-5 mt-5">
         <div id="manage" class="display-1 text-black font">Manage Almost</div>
@@ -107,16 +140,16 @@
     <form id="form" class="position-absolute p-5 shadow-lg">
         <p class="lead fw-bold text-black text-center">Login to Genie</p>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="email_input" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text display-5">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="password_input" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password_input">
         </div>
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-dark ps-5 pe-5">Log In</button>
+            <button id="log_in_btn" type="button" class="btn btn-dark ps-5 pe-5">Log In</button>
         </div>
     </form>
     <div class="mt-5 ms-5">
@@ -152,7 +185,11 @@
     <p class="lead text-black mt-5 text-center align-self-center d-ms-2">A Powerful System with User Authentication which has the ability of Manage Customers, Orders and Items<br>
         to track the Progress of Business. Track All Past Data by accessing the Order History.</p>
     <img class="mt-5 mb-5 d-block mx-auto d-none d-md-none d-lg-block" src="assets/images/system-view.png" alt="system-ui" width="1200px">
-</main>
+</section>
+
+    <section id="dashboard_content">
+        DashBoard
+    </section>
 <footer>
     <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
         <div class="container-xxl">
@@ -169,5 +206,8 @@
 </footer>
     <script src="assets/lib/jquery-4.0.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="controller/LoginController.js"></script>
+    <script type="module" src="controller/CustomerController.js"></script>
+
 </body>
 </html>

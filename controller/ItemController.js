@@ -26,7 +26,7 @@ const loadItemCards = () => {
 
     item_array.map((item,index) => {
         let newCard = `
-            <div class="card" style="width: 18rem;" data-id="${item.id}">
+            <div class="card" style="width: 18rem;" data-id="${item.id}" data-price="${item.price}">
                 <div id="id-div" class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center">${item.id}</div>
                 <img src="${item.image}" class="card-img-top mt-3" alt="...">
                 <div class="card-body text-center">

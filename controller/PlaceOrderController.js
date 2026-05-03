@@ -54,3 +54,37 @@ $('#customer_tbody').on('click', 'tr',function () {
     $('#order_customer_name_input').val(obj.name);
 })
 
+//set received value
+$('#received_amount_input').on('input', function () {
+    let typed = $(this).val();
+    $('#r_amount_field').text(`Received Amount : ${typed}`);
+});
+
+// add order items
+$('.order_item_add_btn').on('click', function () {
+    let card = $(this).closest('.card');   // ✅ scope to clicked card only
+
+    let item_id    = card.find('.id-div').text().trim();
+    let item_name  = card.find('.item-name').text().trim();
+    let item_price_text = card.find('.item-price').text().trim();
+    let qty        = parseInt(card.find('.order_qty_input').val()) || 0;
+
+    if (qty <= 0) return alert('Please enter a quantity');
+
+    // extract number from "LKR. 350000 /="
+    let item_price = parseFloat(card.data('price'));
+    let sub_total  = item_price * qty;
+
+    let newRow = `<tr>
+        <td>${item_id}</td>
+        <td>${item_name}</td>
+        <td>${item_price}</td>
+        <td>${qty}</td>
+        <td>${sub_total}</td>
+    </tr>`;
+
+    $('table:eq(0) tbody').append(newRow);  // ✅ targets the order/cart table
+
+    card.find('.order_qty_input').val(0);   // reset qty after adding
+})
+
