@@ -51,6 +51,92 @@
         footer{
             background-color: rgb(242, 242, 242);
         }
+        .table-div{
+            padding: 2px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+        .card-cont{
+            padding: 10px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+        body{
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+        }
+        header{
+            background-color: white;
+        }
+        #form{
+            background-color: rgb(242, 242, 242);
+            border-radius: 30px;
+            width: 500px;
+        }
+        main{
+            position: relative;
+            overflow: hidden;
+        }
+        footer{
+            background-color: rgb(242, 242, 242);
+        }
+        #table-div{
+            padding: 2px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+        body{
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+        }
+        header{
+            background-color: white;
+        }
+        #form{
+            background-color: rgb(242, 242, 242);
+            border-radius: 30px;
+            width: 500px;
+        }
+        main{
+            position: relative;
+            overflow: hidden;
+        }
+        footer{
+            background-color: rgb(242, 242, 242);
+        }
+        #card-cont{
+            padding: 10px;
+            position: relative;
+            align-self: center;
+            border: 2px solid black;
+            border-radius: 30px;
+            width: 90%;
+        }
+        #id-div{
+            background-color: black;
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #customer_form{
+            background-color: rgb(242, 242, 242);
+            border-radius: 30px;
+            width: 500px;
+        }
+        #item_form{
+            background-color: rgb(242, 242, 242);
+            border-radius: 30px;
+            width: 500px;
+        }
     </style>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -110,16 +196,16 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="dashboard-main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="#manage" class="nav-link">DashBoard</a>
+                            <a href="#" id="dashboard_tab" class="nav-link">DashBoard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#what-we" class="nav-link">Customers</a>
+                            <a href="#" id="customer_tab" class="nav-link">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#what-we" class="nav-link">Items</a>
+                            <a href="#" id="item_tab" class="nav-link">Items</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#contact" class="nav-link">Place Order</a>
+                            <a href="#" id="order_tab" class="nav-link">Place Order</a>
                         </li>
                     </ul>
                 </div>
@@ -187,8 +273,234 @@
     <img class="mt-5 mb-5 d-block mx-auto d-none d-md-none d-lg-block" src="assets/images/system-view.png" alt="system-ui" width="1200px">
 </section>
 
-    <section id="dashboard_content">
+    <section id="dashboard_content" class="d-none">
         DashBoard
+    </section>
+
+    <section id="customer_content" class="d-none">
+        <div id="form-cont" class="row d-flex justify-content-around p-5">
+            <div class="col-8 col-md-7">
+                <img src="assets/gifs/customer.gif" alt="customer-gif" width="90%" class="mt-5">
+                <p class="lead text-secondary mt-5 text-center display-6">Customers are the Most Valuable asset in every Business !</p>
+            </div>
+            <form id="customer_form" class="position-relative p-5 shadow-lg mx-auto mt-5 col">
+                <p class="lead fw-bold text-black text-center">Customer Form</p>
+                <div class="mb-3">
+                    <label for="customer_id_input" class="form-label">ID</label>
+                    <input type="number" class="form-control" id="customer_id_input">
+                </div>
+                <div class="mb-3">
+                    <label for="customer_name_input" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="customer_name_input">
+                </div>
+                <div class="mb-3">
+                    <label for="customer_phone_input" class="form-label">Contact Number</label>
+                    <input type="text" class="form-control" id="customer_phone_input">
+                </div>
+                <div class="mb-3">
+                    <label for="customer_address_input" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="customer_address_input">
+                </div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="button" id="customer_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
+                    <button type="button" id="customer_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
+                    <button type="button" id="customer_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
+                    <button type="button" id="customer_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="mt-5 mb-5 mx-auto p-5 table-div">
+            <h2 class="display-6 fw-bold">Customers</h2>
+            <table class="table table-hover mx-auto mt-5 border-rounded">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Address</th>
+                </tr>
+                </thead>
+                <tbody id="customer_tbody">
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <section id="item_content" class="d-none">
+        <div class="row d-flex justify-content-around p-5 form-cont">
+            <div class="col-8 col-md-7">
+                <img src="assets/gifs/items.gif" alt="items.gif" width="90%" class="mt-5">
+                <p class="lead text-secondary mt-5 text-center display-6">Laptops, Mobile Phones and Any Other Computer Accessories...</p>
+            </div>
+            <form id="item_form" class="position-relative p-5 shadow-lg mx-auto mt-1">
+                <p class="lead fw-bold text-black text-center">Item Form</p>
+                <div class="mb-3">
+                    <label for="item_id_input" class="form-label">Item ID</label>
+                    <input type="number" class="form-control" id="item_id_input">
+                </div>
+                <div class="mb-3">
+                    <label for="item_name_input" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="item_name_input">
+                </div>
+                <div class="mb-3">
+                    <label for="item_price_input" class="form-label">Unit Price</label>
+                    <input type="text" class="form-control" id="item_price_input">
+                </div>
+                <div class="mb-3">
+                    <label for="item_qty_input" class="form-label">Quantity</label>
+                    <input type="text" class="form-control" id="item_qty_input">
+                </div>
+                <div class="mb-3">
+                    <label for="item_image_input" class="form-label">Item Image <span class="text-danger">*</span></label>
+                    <input type="file" class="form-control" id="item_image_input" accept="image/*">
+                    <img id="item_image_preview" src="" alt="preview" class="mt-2 rounded d-none" style="height:80px; object-fit:cover;">
+                </div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="button" id="item_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
+                    <button type="button" id="item_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
+                    <button type="button" id="item_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
+                    <button type="reset" id="item_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div id="card-div" class="mt-5 mb-5 mx-auto p-5">
+            <h2 class="display-6 fw-bold ms-5">Items</h2>
+            <div class="row justify-content-around ms-5 card-cont">
+
+            </div>
+        </div>
+
+    </section>
+
+    <section id="order_content" class="d-none">
+        <div class="row d-flex justify-content-around p-5 form-cont">
+            <div class="col-8 col-md-7">
+                <img src="assets/gifs/payment.gif" alt="items.gif" width="90%" class="mt-5">
+                <p class="lead text-secondary mt-5 text-center display-6">Keep Your Orders in Track and the Current Assets in Your Control...</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="display-4 ms-5">Place Order</h2>
+            <div id="order-cont" class="mx-auto p-5">
+                <div class="row">
+                    <div class="mb-3 w-25 ms-5 mt-5">
+                        <label for="order_id_input" class="form-label">Order ID</label>
+                        <input type="number" class="form-control" id="order_id_input">
+                    </div>
+                    <div class="mb-3 w-25 ms-5 mt-5">
+                        <label for="order_customer_name_input" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="order_customer_name_input">
+                    </div>
+                </div>
+                <h2 class="display-6 ms-5 mt-5">Item Cart</h2>
+                <table class="table table-hover w-75 mx-auto">
+                    <thead>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="mb-3 w-25 ms-5 mt-5">
+                    <label for="received_amount_input" class="form-label">Received Amount</label>
+                    <input type="text" class="form-control" id="received_amount_input">
+                </div>
+
+                <div id="total-div" class="row mt-5 mx-auto w-50 rounded-3 p-3 text-center">
+                    <h5 class="text-success display-7">Grand Total : </h5>
+                    <h6 id="r_amount_field" class="text-warning display-7">Received Amount : </h6>
+                    <h6 class="text-danger display-7">Balance : </h6>
+                    <div class="mt-3 d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-warning rounded-1 ps-3 pe-3 order_item_decrease_btn w-25 position-relative bottom-0 end-0">Reset</button>
+                        <button type="button" class="btn btn-primary rounded-1 ps-3 pe-3 order_item_decrease_btn w-25 position-relative bottom-0 end-0">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-5 mx-auto p-5 table-div">
+            <h2 class="display-6 fw-bold">Customers</h2>
+            <table class="table table-hover mx-auto mt-5 border-rounded">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Address</th>
+                </tr>
+                </thead>
+                <tbody id="order_customer_tbody">
+                <td>1</td>
+                <td>Chathura</td>
+                <td>0771234567</td>
+                <td>Kadawatha</td>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-5 mb-5 mx-auto p-5">
+            <h2 class="display-6 fw-bold ms-5">Items</h2>
+            <div class="row justify-content-around ms-5 card-cont">
+                <div class="card" style="width: 18rem;" data-id="${item.id}" data-price="350000">
+                    <div class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center id-div">1</div>
+                    <img src="assets/images/mac-1.png" class="card-img-top mt-3" alt="...">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mx-auto item-name">MacBook Air</h3>
+                        <h5 class="card-title mt-3 mx-auto item-price">LKR. 350000 /=</h5>
+                        <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">100 In Stock</a>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col d-flex justify-content-around">
+                            <div class="col-lg-5 mb-3 input-group align-items-center">
+                                <label for="order_qty_input" class="d-inline form-label me-2 order_qty_input">Qty</label>
+                                <input type="number" class="d-inline form-control me-4 order_qty_input" id="order_qty_input">
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 me-2 order_item_increase_btn">+</button>
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 order_item_decrease_btn">-</button>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary rounded ps-3 pe-3 ms-2 order_item_add_btn">Add</button>
+                            <button type="button" class="btn btn-warning rounded ps-3 pe-3 ms-2 order_item_reset_btn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;" data-id="${item.id}" data-price="350000">
+                    <div class="position-relative left-0 mb-3 mx-auto text-white fw-bold text-center id-div">1</div>
+                    <img src="assets/images/mac-1.png" class="card-img-top mt-3" alt="...">
+                    <div class="card-body text-center">
+                        <h3 class="card-title mt-3 mx-auto item-name">MacBook Air</h3>
+                        <h5 class="card-title mt-3 mx-auto item-price">LKR. 350000 /=</h5>
+                        <a href="#" class="btn btn-success mt-3 mx-auto rounded-5">100 In Stock</a>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col d-flex justify-content-around">
+                            <div class="col-lg-5 mb-3 input-group align-items-center">
+                                <label for="order_qty_input" class="d-inline form-label me-2 order_qty_input">Qty</label>
+                                <input type="number" class="d-inline form-control me-4 order_qty_input">
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 me-2 order_item_increase_btn">+</button>
+                                <button type="button" class="btn btn-outline-dark rounded ps-3 pe-3 order_item_decrease_btn">-</button>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary rounded ps-3 pe-3 ms-2 order_item_add_btn">Add</button>
+                            <button type="button" class="btn btn-warning rounded ps-3 pe-3 ms-2 order_item_reset_btn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
     </section>
 <footer>
     <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
@@ -208,6 +520,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script type="module" src="controller/LoginController.js"></script>
     <script type="module" src="controller/CustomerController.js"></script>
-
+    <script type="module" src="controller/ItemController.js"></script>
+    <script type="module" src="controller/PlaceOrderController.js"></script>
+    <script type="module" src="controller/MenubarController.js"></script>
 </body>
 </html>
