@@ -51,6 +51,7 @@ $('#item_reset_btn').on('click', function () {
 
 // load item details
 $('#item_card_cont').on('click','.card',function () {
+    let id = $(this).data('id');
     let card = getItemDataById(id);
 
     $('#item_id_input').val(card.id);
@@ -79,6 +80,8 @@ $('#item_update_btn').on('click', function () {
         reader.readAsDataURL(item_image);
         reader.onload = function () {
             updateItems(item_id, item_name, item_price, item_qty, reader.result);
+            loadItemCards();
+            $('#item_reset_btn').trigger('click');
         }
     } else {
         // no new image — reuse existing
