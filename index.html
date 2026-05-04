@@ -158,6 +158,19 @@
             position: relative;
             overflow-x: hidden;
         }
+        .dash-div{
+            background-color: rgb(240,240,240);
+            min-height: 150px;
+        }
+        #dash-div-1{
+            background-color: #f5cfb8;
+        }
+        #dash-div-2{
+            background-color: #d6b8f5;
+        }
+        #dash-div-3{
+            background-color: #bbedc9;
+        }
     </style>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -236,47 +249,11 @@
 <section id="login_content">
 
     <img id="circle" class="d-none d-md-none d-lg-block" src="assets/images/circle.png" alt="purple-circle" width="600px">
-<!--    <div class="ms-5 mt-5">-->
-<!--        <div id="manage" class="display-1 text-black font">Manage Almost</div>-->
-<!--        <div id="everything-text" class="display-1 font fw-bold mt-3">Everything.</div>-->
-<!--    </div>-->
-
-<!--    <p class="lead text-secondary ms-5 mt-3">Your Personal Assistant in Your Business to<br>-->
-<!--        Organize All Your Records, Stocks and for<br>-->
-<!--        the Management.</p>-->
-<!--    <hr class="ms-5" id="line">-->
-<!--    <form id="form" class="position-absolute p-5 shadow-lg">-->
-<!--        <p class="lead fw-bold text-black text-center">Login to Genie</p>-->
-<!--        <div class="mb-3">-->
-<!--            <label for="email_input" class="form-label">Email</label>-->
-<!--            <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp">-->
-<!--            <div id="emailHelp" class="form-text display-5">We'll never share your email with anyone else.</div>-->
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label for="password_input" class="form-label">Password</label>-->
-<!--            <input type="password" class="form-control" id="password_input">-->
-<!--        </div>-->
-<!--        <div class="d-flex justify-content-center">-->
-<!--            <button id="log_in_btn" type="button" class="btn btn-dark ps-5 pe-5">Log In</button>-->
-<!--        </div>-->
-<!--    </form>-->
-
-<!--    <div class="mt-5 ms-5">-->
-<!--        <div>-->
-<!--            <button type="button" class="btn btn-outline-danger ps-5 pe-5">Security</button>-->
-<!--            <button type="button" class="btn btn-outline-success ps-5 pe-5 ms-3">Management</button>-->
-<!--            <button type="button" class="btn btn-outline-primary ps-5 pe-5 ms-3">Strategy</button>-->
-<!--        </div>-->
-<!--        <button type="button" class="btn btn-outline-warning ps-5 pe-5 mt-3">Continuous Profits !</button>-->
-<!--        <button type="button" class="btn btn-outline-info ps-5 pe-5 mt-3 ms-3">Continuous Orders !</button>-->
-<!--    </div>-->
-<!--    <p class="lead text-secondary text-black mt-5 ms-5">Genie is a Powerful POS System to Handle Your Reliable Customers,<br>-->
-<!--        Items and Orders in the way You Want</p>-->
     <div class="row flex-column flex-lg-row p-4 p-lg-5">
 
         <!-- content column -->
         <div class="col-12 col-lg-7">
-            <div class="ms-2 ms-lg-5 mt-5">
+            <div class="ms-2 ms-lg-5 mt-4">
                 <div id="manage" class="display-1 text-black font">Manage Almost</div>
                 <div id="everything-text" class="display-1 font fw-bold mt-3">Everything.</div>
             </div>
@@ -344,8 +321,65 @@
     <img class="mt-5 mb-5 d-block mx-auto d-none d-md-none d-lg-block" src="assets/images/system-view.png" alt="system-ui" width="1200px">
 </section>
 
-    <section id="dashboard_content" class="d-none">
-        DashBoard
+    <section id="dashboard_content" class="d-none d-flex flex-column flex-lg-row w-100 p-3 gap-3">
+
+        <!-- Left column: 3 stat cards -->
+        <div class="d-flex flex-column gap-3" style="flex: 0 0 30%; min-width: 220px;">
+
+            <div id="dash-div-1" class="dash-div rounded-3 shadow-sm p-3 d-flex align-items-center gap-3 w-100 mt-5" style="background:#f5f5f5;">
+                <img src="assets/images/customer.png" alt="customers" width="60px">
+                <div class="d-flex flex-column">
+                    <h3 id="total_customers" class="fw-bold mb-0">0</h3>
+                    <span class="text-muted">Total Customers</span>
+                    <span class="text-muted" style="font-size:11px;">in current session</span>
+                </div>
+            </div>
+
+            <div id="dash-div-2" class="dash-div rounded-3 shadow-sm p-3 d-flex align-items-center gap-3 w-100 mt-5" style="background:#f5f5f5;">
+                <img src="assets/images/item.png" alt="items" width="60px">
+                <div class="d-flex flex-column">
+                    <h3 id="total_items" class="fw-bold mb-0">0</h3>
+                    <span class="text-muted">Total Items</span>
+                    <span class="text-muted" style="font-size:11px;">in current session</span>
+                </div>
+            </div>
+
+            <div id="dash-div-3" class="dash-div rounded-3 shadow-sm p-3 d-flex align-items-center gap-3 w-100 mt-5" style="background:#f5f5f5;">
+                <img src="assets/images/order.png" alt="sales" width="60px">
+                <div class="d-flex flex-column">
+                    <h3 id="total_sales" class="fw-bold mb-0">0</h3>
+                    <span class="text-muted">Total Sales</span>
+                    <span class="text-muted" style="font-size:11px;">in current session</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right column: wider, sales + orders -->
+        <div id="dash-2-div" class="d-flex flex-column gap-3" style="flex: 1 1 0; min-width: 0;">
+
+            <div id="total_sales_amount" class="rounded-3 shadow-sm p-4 w-100 mt-5" style="background:#f5f5f5;">
+                <p class="text-muted mb-1" style="font-size:13px;">Total Sales Amount</p>
+                <h2 id="total_sales_amount_field" class="fw-bold text-success">LKR. 0.00</h2>
+                <span class="text-muted" style="font-size:11px;">in current session</span>
+            </div>
+
+            <div id="last_transactions" class="rounded-3 shadow-sm p-4 w-100" style="background:#f5f5f5;">
+                <p class="fw-bold mb-3">Latest Orders</p>
+                <table class="table table-sm table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Order ID</th><th>Customer</th><th>Total</th><th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody id="latest_orders_tbody">
+                    <tr><td colspan="4" class="text-muted text-center">No orders yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
     </section>
 
     <section id="customer_content" class="d-none">

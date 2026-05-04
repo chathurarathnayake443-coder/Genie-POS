@@ -296,5 +296,7 @@ const reduceItemStock = (order_items) => {
     });
 }
 
+export const getOrderData = () => order_db_array;
+
 export {loadOrderPage};
 
