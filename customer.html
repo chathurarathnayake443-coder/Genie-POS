@@ -1,147 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="assets/images/genie.png">
-    <title>Genie - Customers</title>
-    <style>
-        body{
-            overflow-x: hidden;
-            font-family: "Poppins", sans-serif;
-        }
-        header{
-            background-color: white;
-        }
-        #form{
-            background-color: rgb(242, 242, 242);
-            border-radius: 30px;
-            width: 500px;
-        }
-        main{
-            position: relative;
-            overflow: hidden;
-        }
-        footer{
-            background-color: rgb(242, 242, 242);
-        }
-        #table-div{
-            padding: 2px;
-            position: relative;
-            align-self: center;
-            border: 2px solid black;
-            border-radius: 30px;
-            width: 90%;
-        }
-    </style>
-</head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Forum&family=Outfit:wght@100..900&family=Ovo&family=Petit+Formal+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <link rel="icon" type="image/png" href="assets/images/genie.png">-->
+<!--    <title>Genie - Customers</title>-->
+<!--    <style>-->
+<!--        body{-->
+<!--            overflow-x: hidden;-->
+<!--            font-family: "Poppins", sans-serif;-->
+<!--        }-->
+<!--        header{-->
+<!--            background-color: white;-->
+<!--        }-->
+<!--        #form{-->
+<!--            background-color: rgb(242, 242, 242);-->
+<!--            border-radius: 30px;-->
+<!--            width: 500px;-->
+<!--        }-->
+<!--        main{-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+<!--        footer{-->
+<!--            background-color: rgb(242, 242, 242);-->
+<!--        }-->
+<!--        #table-div{-->
+<!--            padding: 2px;-->
+<!--            position: relative;-->
+<!--            align-self: center;-->
+<!--            border: 2px solid black;-->
+<!--            border-radius: 30px;-->
+<!--            width: 90%;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">-->
+<!--<link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Forum&family=Outfit:wght@100..900&family=Ovo&family=Petit+Formal+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">-->
 
-<body class="pt-5">
-<header class="position-fixed top-0 start-0 end-0 z-3">
-    <nav class="navbar navbar-expand-md navbar-light shadow-sm">
-        <div class="container-xxl">
-            <a href="#intro" class="navbar-brand">
-                <img src="assets/images/genie.png" width="50px" alt="Genie Logo">
-                <span class="fw-bold text-secondary">
-                Genie
-            </span>
-            </a>
-            <!--        toggle btn for mobile nav-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!--<body class="pt-5">-->
+<!--<header class="position-fixed top-0 start-0 end-0 z-3">-->
+<!--    <nav class="navbar navbar-expand-md navbar-light shadow-sm">-->
+<!--        <div class="container-xxl">-->
+<!--            <a href="#intro" class="navbar-brand">-->
+<!--                <img src="assets/images/genie.png" width="50px" alt="Genie Logo">-->
+<!--                <span class="fw-bold text-secondary">-->
+<!--                Genie-->
+<!--            </span>-->
+<!--            </a>-->
+<!--            &lt;!&ndash;        toggle btn for mobile nav&ndash;&gt;-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
 
-            <!--        navbar links-->
-            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#manage" class="nav-link">DashBoard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#what-we" class="nav-link">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#what-we" class="nav-link">Items</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Place Order</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-<section id="customer-content">
-    <div id="form-cont" class="row d-flex justify-content-around p-5">
-        <div class="col-8 col-md-7">
-            <img src="assets/gifs/customer.gif" alt="customer-gif" width="90%" class="mt-5">
-            <p class="lead text-secondary mt-5 text-center display-6">Customers are the Most Valuable asset in every Business !</p>
-        </div>
-        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5 col">
-            <p class="lead fw-bold text-black text-center">Customer Form</p>
-            <div class="mb-3">
-                <label for="customer_id_input" class="form-label">ID</label>
-                <input type="number" class="form-control" id="customer_id_input">
-            </div>
-            <div class="mb-3">
-                <label for="customer_name_input" class="form-label">Name</label>
-                <input type="text" class="form-control" id="customer_name_input">
-            </div>
-            <div class="mb-3">
-                <label for="customer_phone_input" class="form-label">Contact Number</label>
-                <input type="text" class="form-control" id="customer_phone_input">
-            </div>
-            <div class="mb-3">
-                <label for="customer_address_input" class="form-label">Address</label>
-                <input type="text" class="form-control" id="customer_address_input">
-            </div>
-            <div class="d-flex justify-content-center mt-5">
-                <button type="button" id="customer_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>
-                <button type="button" id="customer_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>
-                <button type="button" id="customer_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>
-                <button type="button" id="customer_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>
-            </div>
-        </form>
+<!--            &lt;!&ndash;        navbar links&ndash;&gt;-->
+<!--            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">-->
+<!--                <ul class="navbar-nav">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#manage" class="nav-link">DashBoard</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#what-we" class="nav-link">Customers</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#what-we" class="nav-link">Items</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#contact" class="nav-link">Place Order</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+<!--<section id="customer-content">-->
+<!--    <div id="form-cont" class="row d-flex justify-content-around p-5">-->
+<!--        <div class="col-8 col-md-7">-->
+<!--            <img src="assets/gifs/customer.gif" alt="customer-gif" width="90%" class="mt-5">-->
+<!--            <p class="lead text-secondary mt-5 text-center display-6">Customers are the Most Valuable asset in every Business !</p>-->
+<!--        </div>-->
+<!--        <form id="form" class="position-relative p-5 shadow-lg mx-auto mt-5 col">-->
+<!--            <p class="lead fw-bold text-black text-center">Customer Form</p>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="customer_id_input" class="form-label">ID</label>-->
+<!--                <input type="number" class="form-control" id="customer_id_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="customer_name_input" class="form-label">Name</label>-->
+<!--                <input type="text" class="form-control" id="customer_name_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="customer_phone_input" class="form-label">Contact Number</label>-->
+<!--                <input type="text" class="form-control" id="customer_phone_input">-->
+<!--            </div>-->
+<!--            <div class="mb-3">-->
+<!--                <label for="customer_address_input" class="form-label">Address</label>-->
+<!--                <input type="text" class="form-control" id="customer_address_input">-->
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-center mt-5">-->
+<!--                <button type="button" id="customer_save_btn" class="btn btn-outline-success rounded ps-3 pe-3 ms-2">Save</button>-->
+<!--                <button type="button" id="customer_update_btn" class="btn btn-outline-primary rounded ps-3 pe-3 ms-2">Update</button>-->
+<!--                <button type="button" id="customer_delete_btn" class="btn btn-outline-danger rounded ps-3 pe-3 ms-2">Delete</button>-->
+<!--                <button type="button" id="customer_reset_btn" class="btn btn-outline-warning rounded ps-3 pe-3 ms-2">Reset</button>-->
+<!--            </div>-->
+<!--        </form>-->
 
-    </div>
+<!--    </div>-->
 
-    <div id="table-div" class="mt-5 mb-5 mx-auto p-5">
-        <h2 class="display-6 fw-bold">Customers</h2>
-        <table class="table table-hover mx-auto mt-5 border-rounded">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Address</th>
-            </tr>
-            </thead>
-            <tbody id="customer_tbody">
+<!--    <div id="table-div" class="mt-5 mb-5 mx-auto p-5">-->
+<!--        <h2 class="display-6 fw-bold">Customers</h2>-->
+<!--        <table class="table table-hover mx-auto mt-5 border-rounded">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th scope="col">ID</th>-->
+<!--                <th scope="col">Name</th>-->
+<!--                <th scope="col">Contact Number</th>-->
+<!--                <th scope="col">Address</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody id="customer_tbody">-->
 
-            </tbody>
-        </table>
-    </div>
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
 
-</section>
-<footer>
-    <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">
-        <div class="container-xxl">
-            <span class="text-black">Genie V1.0.0</span>
-            <span class="text-secondary">© CSR .Inc @ 2026</span>
-            <span>
-                <span class="fw-bold text-black">
-                Developed By
-            </span>
-                <img src="assets/images/csr-logo.png" width="50px" alt="Genie Logo">
-            </span>
-        </div>
-    </nav>
-</footer>
-<script src="assets/lib/jquery-4.0.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<script type="module" src="controller/CustomerController.js"></script>
-</body>
-</html>
+<!--</section>-->
+<!--<footer>-->
+<!--    <nav id="contact" class="navbar navbar-expand-md navbar-light shadow-sm">-->
+<!--        <div class="container-xxl">-->
+<!--            <span class="text-black">Genie V1.0.0</span>-->
+<!--            <span class="text-secondary">© CSR .Inc @ 2026</span>-->
+<!--            <span>-->
+<!--                <span class="fw-bold text-black">-->
+<!--                Developed By-->
+<!--            </span>-->
+<!--                <img src="assets/images/csr-logo.png" width="50px" alt="Genie Logo">-->
+<!--            </span>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</footer>-->
+<!--<script src="assets/lib/jquery-4.0.0.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>-->
+<!--<script type="module" src="controller/CustomerController.js"></script>-->
+<!--</body>-->
+<!--</html>-->

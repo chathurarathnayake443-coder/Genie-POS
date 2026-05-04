@@ -34,6 +34,8 @@
 //     $('#order_content').css('display', 'block');
 // })
 
+import {loadOrderPage} from "./PlaceOrderController.js";
+
 const showSection = (sectionId) => {
     $('#dashboard_content, #customer_content, #item_content, #order_content').addClass('d-none');
     $(sectionId).removeClass('d-none');
@@ -42,4 +44,7 @@ const showSection = (sectionId) => {
 $('#dashboard_tab').on('click', () => showSection('#dashboard_content'));
 $('#customer_tab').on('click', () => showSection('#customer_content'));
 $('#item_tab').on('click',     () => showSection('#item_content'));
-$('#order_tab').on('click',    () => showSection('#order_content'));
+$('#order_tab').on('click', () => {
+    showSection('#order_content');
+    loadOrderPage();
+});

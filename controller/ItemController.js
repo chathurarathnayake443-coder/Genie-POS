@@ -20,7 +20,7 @@ $('#item_save_btn').on('click', function () {
 })
 
 const loadItemCards = () => {
-    $('#card-cont').empty();
+    $('#item_card_cont').empty();
 
     let item_array = getItemData();
 
@@ -36,7 +36,7 @@ const loadItemCards = () => {
                 </div>
             </div>`;
 
-        $('#card-cont').append(newCard);
+        $('#item_card_cont').append(newCard);
     })
 }
 
@@ -82,7 +82,7 @@ $('#item_update_btn').on('click', function () {
         }
     } else {
         // no new image — reuse existing
-        let existing = item_db_array.find(item => item.id == item_id);
+        let existing = getItemData().find(item => item.id == item_id);
         if (!existing) return alert('Item Not Found');
         updateItems(item_id, item_name, item_price, item_qty, existing.image);
         loadItemCards();
