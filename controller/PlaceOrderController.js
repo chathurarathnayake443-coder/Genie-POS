@@ -56,49 +56,33 @@ const loadItemCards = () => {
 
 // increase / decrease buttons
 // increase
-$('.order_item_increase_btn').on('click', function () {
+$('#order_card_cont').on('click', '.order_item_increase_btn', function () {
     let qtyInput = $(this).closest('.card').find('.order_qty_input');
     let currentVal = parseInt(qtyInput.val()) || 0;
     qtyInput.val(currentVal + 1);
 })
 
-// decrease
-$('.order_item_decrease_btn').on('click', function () {
+//decrease
+$('#order_card_cont').on('click', '.order_item_decrease_btn', function () {
     let qtyInput = $(this).closest('.card').find('.order_qty_input');
     let currentVal = parseInt(qtyInput.val()) || 0;
     if (currentVal >= 1) qtyInput.val(currentVal - 1);
 })
 
-// reset
-$('.order_item_reset_btn').on('click', function () {
+//reset
+$('#order_card_cont').on('click', '.order_item_reset_btn', function () {
     $(this).closest('.card').find('.order_qty_input').val(0);
 })
 
-// set customer name
-$('#order_customer_tbody').on('click', 'tr',function () {
-    let customer_array = getCustomerData();
-    let obj = customer_array[$(this).index()];
-    $('#order_customer_name_input').val(obj.name);
-})
-
-//set received value
-$('#received_amount_input').on('input', function () {
-    let typed = $(this).val();
-    $('#r_amount_field').text(`Received Amount : ${typed}`);
-});
-
-// add order items
-$('.order_item_add_btn').on('click', function () {
+//add to cart
+$('#order_card_cont').on('click', '.order_item_add_btn', function () {
     let card = $(this).closest('.card');
-
-    let item_id    = card.find('.id-div').text().trim();
-    let item_name  = card.find('.item-name').text().trim();
-    let item_price_text = card.find('.item-price').text().trim();
-    let qty        = parseInt(card.find('.order_qty_input').val()) || 0;
+    let item_id   = card.find('.id-div').text().trim();
+    let item_name = card.find('.item-name').text().trim();
+    let qty       = parseInt(card.find('.order_qty_input').val()) || 0;
 
     if (qty <= 0) return alert('Please enter a quantity');
 
-    // extract number from "LKR. 350000 /="
     let item_price = parseFloat(card.data('price'));
     let sub_total  = item_price * qty;
 
@@ -111,9 +95,20 @@ $('.order_item_add_btn').on('click', function () {
     </tr>`;
 
     $('#cart_tbody').append(newRow);
-
-    card.find('.order_qty_input').val(0);   // reset qty after adding
+    card.find('.order_qty_input').val(0);
 })
+// set customer name
+$('#order_customer_tbody').on('click', 'tr',function () {
+    let customer_array = getCustomerData();
+    let obj = customer_array[$(this).index()];
+    $('#order_customer_name_input').val(obj.name);
+})
+
+//set received value
+$('#received_amount_input').on('input', function () {
+    let typed = $(this).val();
+    $('#r_amount_field').text(`Received Amount : ${typed}`);
+});
 
 export {loadOrderPage};
 

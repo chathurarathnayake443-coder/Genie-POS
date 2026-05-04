@@ -50,8 +50,8 @@ $('#item_reset_btn').on('click', function () {
 })
 
 // load item details
-$('#card-cont').on('click','.card',function () {
-    let card = getItemDataByIndex($(this).data('id'));
+$('#item_card_cont').on('click','.card',function () {
+    let card = getItemDataById(id);
 
     $('#item_id_input').val(card.id);
     $('#item_name_input').val(card.name);
