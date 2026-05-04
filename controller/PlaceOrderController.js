@@ -105,12 +105,6 @@ $('#order_customer_tbody').on('click', 'tr',function () {
     $('#order_customer_name_input').val(obj.name);
 })
 
-//set received value
-$('#received_amount_input').on('input', function () {
-    let typed = $(this).val();
-    $('#r_amount_field').text(`Received Amount : ${typed}`);
-});
-
 //get grand total
 const getGrandTotal = () => {
     let total = 0;
@@ -160,6 +154,23 @@ $('#received_amount_input').on('input', function () {
 //     $('#r_amount_field').text(`Received Amount : ${received}`);
 //     $('#balance_field').text(`Balance : ${balance}`);
 // })
+
+// reset button in order cart
+
+$('#order_reset_btn').on('click', function () {
+    // clear inputs
+    $('#order_id_input').val('');
+    $('#order_customer_name_input').val('');
+    $('#received_amount_input').val('');
+
+    // clear cart table
+    $('#cart_tbody').empty();
+
+    // reset amount fields
+    $('#grand_total_field').text('Grand Total : ');
+    $('#r_amount_field').text('Received Amount : ');
+    $('#balance_field').removeClass('text-success text-danger').text('Balance : ');
+})
 
 export {loadOrderPage};
 
