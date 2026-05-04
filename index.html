@@ -26,6 +26,7 @@
             right: -150px;
             top: -100px;
             transform: rotate(-20deg);
+            z-index: 1;
         }
         #form{
             background-color: rgb(242, 242, 242);
@@ -33,6 +34,7 @@
             left: 800px;
             top: 200px;
             width: 500px;
+            z-index: 2;
         }
         #what-we{
             color: #3A48B1;
@@ -208,7 +210,7 @@
             </span>
                 </a>
                 <!--        toggle btn for mobile nav-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#login-main-nav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -241,7 +243,7 @@
             </span>
                 </a>
                 <!--        toggle btn for mobile nav-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-main-nav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -266,42 +268,92 @@
         </nav>
     </header>
 <section id="login_content">
-    <img id="circle" class="d-none d-md-none d-lg-block" src="assets/images/circle.png" alt="purple-circle" width="600px">
-    <div class="ms-5 mt-5">
-        <div id="manage" class="display-1 text-black font">Manage Almost</div>
-        <div id="everything-text" class="display-1 font fw-bold mt-3">Everything.</div>
-    </div>
 
-    <p class="lead text-secondary ms-5 mt-3">Your Personal Assistant in Your Business to<br>
-        Organize All Your Records, Stocks and for<br>
-        the Management.</p>
-    <hr class="ms-5" id="line">
-    <form id="form" class="position-absolute p-5 shadow-lg">
-        <p class="lead fw-bold text-black text-center">Login to Genie</p>
-        <div class="mb-3">
-            <label for="email_input" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text display-5">We'll never share your email with anyone else.</div>
+    <img id="circle" class="d-none d-md-none d-lg-block" src="assets/images/circle.png" alt="purple-circle" width="600px">
+<!--    <div class="ms-5 mt-5">-->
+<!--        <div id="manage" class="display-1 text-black font">Manage Almost</div>-->
+<!--        <div id="everything-text" class="display-1 font fw-bold mt-3">Everything.</div>-->
+<!--    </div>-->
+
+<!--    <p class="lead text-secondary ms-5 mt-3">Your Personal Assistant in Your Business to<br>-->
+<!--        Organize All Your Records, Stocks and for<br>-->
+<!--        the Management.</p>-->
+<!--    <hr class="ms-5" id="line">-->
+<!--    <form id="form" class="position-absolute p-5 shadow-lg">-->
+<!--        <p class="lead fw-bold text-black text-center">Login to Genie</p>-->
+<!--        <div class="mb-3">-->
+<!--            <label for="email_input" class="form-label">Email</label>-->
+<!--            <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp">-->
+<!--            <div id="emailHelp" class="form-text display-5">We'll never share your email with anyone else.</div>-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <label for="password_input" class="form-label">Password</label>-->
+<!--            <input type="password" class="form-control" id="password_input">-->
+<!--        </div>-->
+<!--        <div class="d-flex justify-content-center">-->
+<!--            <button id="log_in_btn" type="button" class="btn btn-dark ps-5 pe-5">Log In</button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--    <div class="mt-5 ms-5">-->
+<!--        <div>-->
+<!--            <button type="button" class="btn btn-outline-danger ps-5 pe-5">Security</button>-->
+<!--            <button type="button" class="btn btn-outline-success ps-5 pe-5 ms-3">Management</button>-->
+<!--            <button type="button" class="btn btn-outline-primary ps-5 pe-5 ms-3">Strategy</button>-->
+<!--        </div>-->
+<!--        <button type="button" class="btn btn-outline-warning ps-5 pe-5 mt-3">Continuous Profits !</button>-->
+<!--        <button type="button" class="btn btn-outline-info ps-5 pe-5 mt-3 ms-3">Continuous Orders !</button>-->
+<!--    </div>-->
+<!--    <p class="lead text-secondary text-black mt-5 ms-5">Genie is a Powerful POS System to Handle Your Reliable Customers,<br>-->
+<!--        Items and Orders in the way You Want</p>-->
+    <div class="row flex-column flex-lg-row p-4 p-lg-5">
+
+        <!-- content column -->
+        <div class="col-12 col-lg-7">
+            <div class="ms-2 ms-lg-5 mt-5">
+                <div id="manage" class="display-1 text-black font">Manage Almost</div>
+                <div id="everything-text" class="display-1 font fw-bold mt-3">Everything.</div>
+            </div>
+            <p class="lead text-secondary ms-2 ms-lg-5 mt-3">Your Personal Assistant in Your Business to<br>
+                Organize All Your Records, Stocks and for<br>
+                the Management.</p>
+            <hr class="ms-2 ms-lg-5" id="line">
+
+            <div class="mt-5 ms-2 ms-lg-5">
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-outline-danger ps-3 pe-3">Security</button>
+                    <button type="button" class="btn btn-outline-success ps-3 pe-3">Management</button>
+                    <button type="button" class="btn btn-outline-primary ps-3 pe-3">Strategy</button>
+                </div>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <button type="button" class="btn btn-outline-warning ps-3 pe-3">Continuous Profits !</button>
+                    <button type="button" class="btn btn-outline-info ps-3 pe-3">Continuous Orders !</button>
+                </div>
+            </div>
+            <p class="lead text-secondary mt-5 ms-2 ms-lg-5">Genie is a Powerful POS System to Handle Your Reliable Customers,<br>
+                Items and Orders in the way You Want</p>
         </div>
-        <div class="mb-3">
-            <label for="password_input" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password_input">
+
+        <!-- form column -->
+        <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center mt-5 mt-lg-0">
+            <form id="form" class="p-5 shadow-lg w-100" style="background-color: rgb(242,242,242); border-radius: 30px; max-width: 500px;">
+                <p class="lead fw-bold text-black text-center">Login to Genie</p>
+                <div class="mb-3">
+                    <label for="email_input" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email_input" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password_input" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password_input">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button id="log_in_btn" type="button" class="btn btn-dark ps-5 pe-5">Log In</button>
+                </div>
+            </form>
         </div>
-        <div class="d-flex justify-content-center">
-            <button id="log_in_btn" type="button" class="btn btn-dark ps-5 pe-5">Log In</button>
-        </div>
-    </form>
-    <div class="mt-5 ms-5">
-        <div>
-            <button type="button" class="btn btn-outline-danger ps-5 pe-5">Security</button>
-            <button type="button" class="btn btn-outline-success ps-5 pe-5 ms-3">Management</button>
-            <button type="button" class="btn btn-outline-primary ps-5 pe-5 ms-3">Strategy</button>
-        </div>
-        <button type="button" class="btn btn-outline-warning ps-5 pe-5 mt-3">Continuous Profits !</button>
-        <button type="button" class="btn btn-outline-info ps-5 pe-5 mt-3 ms-3">Continuous Orders !</button>
+
     </div>
-    <p class="lead text-secondary text-black mt-5 ms-5">Genie is a Powerful POS System to Handle Your Reliable Customers,<br>
-        Items and Orders in the way You Want</p>
 
     <p id="what-we" class="lead display-1 fw-bold text-center">What We Offer?</p>
     <div class="row container m-5 d-flex justify-content-around g-1">
@@ -470,7 +522,7 @@
                     <input type="text" class="form-control" id="received_amount_input">
                 </div>
 
-                <div id="total-div" class="row mt-5 mx-auto w-50 rounded-3 p-3 text-center">
+                <div id="total-div" class="row mt-5 mx-auto w-75 rounded-3 p-3 text-center">
                     <h5 id="grand_total_field" class="text-success display-7">Grand Total : </h5>
                     <h6 id="r_amount_field" class="text-warning display-7">Received Amount : </h6>
                     <h6 id="balance_field" class="text-danger display-7">Balance : </h6>
