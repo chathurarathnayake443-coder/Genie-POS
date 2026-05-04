@@ -129,7 +129,37 @@ const updateGrandTotal = () => {
     $('#grand_total_field').text(`Grand Total : ${total}`);
 }
 
+// balance field
+
+$('#received_amount_input').on('input', function () {
+    let received = parseFloat($(this).val()) || 0;
+    let grand_total = getGrandTotal();
+    let balance = received - grand_total;
+
+    $('#r_amount_field').text(`Received Amount : ${received}`);
+
+    if (balance < 0) {
+        $('#balance_field').removeClass('text-success').addClass('text-danger');
+        $('#balance_field').text(`Balance : ${balance} (Insufficient!)`);
+    } else {
+        $('#balance_field').removeClass('text-danger').addClass('text-success');
+        $('#balance_field').text(`Balance : ${balance}`);
+    }
+})
+
+// $('#received_amount_input').on('input', function () {
+//     let received = parseFloat($(this).val()) || 0;
+//     let grand_total = getGrandTotal();
+//     let balance = received - grand_total;
 //
+//     if (balance < 0) {
+//         $('#balance_field').removeClass('text-success').addClass('text-danger');
+//         $('#balance_field').text(`Balance : ${balance} (Insufficient!)`);
+//     }
+//
+//     $('#r_amount_field').text(`Received Amount : ${received}`);
+//     $('#balance_field').text(`Balance : ${balance}`);
+// })
 
 export {loadOrderPage};
 
