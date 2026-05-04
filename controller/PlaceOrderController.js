@@ -1,5 +1,6 @@
 import {getCustomerData} from "../model/CustomerModel.js";
 import {getItemData} from "../model/ItemModel.js";
+import {loadItemCards as loadItemPageCards} from "./ItemController.js";
 
 // order_db_array
 let order_db_array = [];
@@ -227,6 +228,10 @@ $('#confirm_place_btn').on('click', function () {
     order_db_array.push(order);
     order_item_db_array.push(order_items_record);
 
+    reduceItemStock(order_items);
+    loadItemPageCards();
+    loadItemCards();
+
     addToOrderHistory(order, order_items);
 
     // close modal
@@ -279,6 +284,16 @@ const addToOrderHistory = (order, items) => {
     </div>`;
 
     $('.order_history-div').prepend(historyCard);
+}
+
+//reduce item counts
+const reduceItemStock = (order_items) => {
+    order_items.forEach(order_item => {
+        let item = getItemData().find(i => i.id == order_item.item_id);
+        if (item) {
+            item.qty = parseInt(item.qty) - order_item.qty;
+        }
+    });
 }
 
 export {loadOrderPage};

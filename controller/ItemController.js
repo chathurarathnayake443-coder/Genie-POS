@@ -104,3 +104,5 @@ $('#item_delete_btn').on('click', function () {
     loadItemCards();
     $('#item_reset_btn').trigger('click');
 })
+
+export {loadItemCards};
