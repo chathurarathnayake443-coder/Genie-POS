@@ -95,6 +95,7 @@ $('#order_card_cont').on('click', '.order_item_add_btn', function () {
     </tr>`;
 
     $('#cart_tbody').append(newRow);
+    updateGrandTotal();
     card.find('.order_qty_input').val(0);
 })
 // set customer name
@@ -109,6 +110,26 @@ $('#received_amount_input').on('input', function () {
     let typed = $(this).val();
     $('#r_amount_field').text(`Received Amount : ${typed}`);
 });
+
+//get grand total
+const getGrandTotal = () => {
+    let total = 0;
+
+    $('#cart_tbody tr').each(function () {
+        let subTotal = parseFloat($(this).find('td:last').text()) || 0;
+        total += subTotal;
+    })
+
+    return total;
+}
+
+//update total
+const updateGrandTotal = () => {
+    let total = getGrandTotal();
+    $('#grand_total_field').text(`Grand Total : ${total}`);
+}
+
+//
 
 export {loadOrderPage};
 
