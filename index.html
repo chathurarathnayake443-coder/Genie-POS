@@ -20,14 +20,16 @@
             color: rgb(125, 111, 232);
         }
         #line{
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
         }
         #circle{
             position: absolute;
             right: -150px;
             top: -100px;
             transform: rotate(-20deg);
-            z-index: 1;
+            z-index: 0;
+            max-width: 600px;
         }
         #form{
             background-color: rgb(242, 242, 242);
@@ -42,8 +44,11 @@
             margin-top: 150px;
         }
         .div{
-            width: 400px;
-            height: 300px;
+            /*width: 400px;*/
+            /*height: 300px;*/
+            width: 100%;
+            max-width: 400px;
+            min-height: 300px;
             background-color: #FAFAFA;
             border-radius: 30px;
         }
@@ -89,14 +94,6 @@
         footer{
             background-color: rgb(242, 242, 242);
         }
-        #table-div{
-            padding: 2px;
-            position: relative;
-            align-self: center;
-            border: 2px solid black;
-            border-radius: 30px;
-            width: 90%;
-        }
         body{
             overflow-x: hidden;
             font-family: "Poppins", sans-serif;
@@ -115,20 +112,6 @@
         }
         footer{
             background-color: rgb(242, 242, 242);
-        }
-        #card-cont{
-            padding: 10px;
-            position: relative;
-            align-self: center;
-            border: 2px solid black;
-            border-radius: 30px;
-            width: 90%;
-        }
-        #id-div{
-            background-color: black;
-            width: 80px;
-            height: 30px;
-            border-radius: 5px;
         }
         #customer_form{
             background-color: rgb(242, 242, 242);
@@ -159,28 +142,6 @@
         footer{
             background-color: rgb(242, 242, 242);
         }
-        #card-cont{
-            padding: 10px;
-            position: relative;
-            align-self: center;
-            border: 2px solid black;
-            border-radius: 30px;
-            width: 90%;
-        }
-        .id-div{
-            background-color: black;
-            width: 80px;
-            height: 30px;
-            border-radius: 5px;
-        }
-        #table-div{
-            padding: 2px;
-            position: relative;
-            align-self: center;
-            border: 2px solid black;
-            border-radius: 30px;
-            width: 90%;
-        }
         #order-cont{
             width: 90%;
             border-radius: 30px;
@@ -192,6 +153,10 @@
         }
         #order_history{
             background-color: rgb(230,230,230);
+        }
+        #login_content {
+            position: relative;
+            overflow-x: hidden;
         }
     </style>
 </head>
