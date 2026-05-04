@@ -1,12 +1,8 @@
 import {getCustomerData} from "../model/CustomerModel.js";
 import {getItemData} from "../model/ItemModel.js";
 import {loadItemCards as loadItemPageCards} from "./ItemController.js";
-
-// order_db_array
-let order_db_array = [];
-
-// order_item_db_array
-let order_item_db_array = [];
+import { addOrder, getOrderData, orderExists } from "../model/OrderModel.js";
+import { addOrderItems } from "../model/OrderItemModel.js";
 
 const loadOrderPage = () => {
     loadCustomerTable();
@@ -168,7 +164,7 @@ $('#order_place_btn').on('click', function () {
     let received      = parseFloat($('#received_amount_input').val()) || 0;
 
     if (order_id == '')      return alert('Order ID Missing');
-    if (order_db_array.find(order => order.order_id == order_id)) return alert('Order ID already exists!');
+    if (orderExists(order_id))   return alert('Order ID already exists!');
     if (customer_name == '') return alert('Customer Name Missing');
     if ($('#cart_tbody tr').length == 0) return alert('Cart is Empty');
     if (received < grand_total) return alert('Insufficient Amount');
@@ -223,10 +219,8 @@ $('#confirm_place_btn').on('click', function () {
         order_id, customer_name, grand_total, received, balance, date, timestamp
     };
 
-    let order_items_record = { order_id, items: order_items };
-
-    order_db_array.push(order);
-    order_item_db_array.push(order_items_record);
+    addOrder(order_id, customer_name, grand_total, received, balance, date, timestamp);
+    addOrderItems(order_id, order_items);
 
     reduceItemStock(order_items);
     loadItemPageCards();
@@ -295,8 +289,6 @@ const reduceItemStock = (order_items) => {
         }
     });
 }
-
-export const getOrderData = () => order_db_array;
 
 export {loadOrderPage};
 
