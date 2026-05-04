@@ -159,19 +159,111 @@ $('#order_reset_btn').on('click', function () {
 })
 
 // place order
+// $('#order_place_btn').on('click', function () {
+//     let order_id       = $('#order_id_input').val();
+//     let customer_name  = $('#order_customer_name_input').val();
+//     let grand_total    = getGrandTotal();
+//     let received       = parseFloat($('#received_amount_input').val()) || 0;
+//
+//     // validations
+//     if (order_id == '')      return alert('Order ID Missing');
+//     if (customer_name == '') return alert('Customer Name Missing');
+//     if ($('#cart_tbody tr').length == 0) return alert('Cart is Empty');
+//     if (received < grand_total) return alert('Insufficient Amount');
+//
+//     // build order items list from cart table
+//     let order_items = [];
+//     $('#cart_tbody tr').each(function () {
+//         let cols = $(this).find('td');
+//         order_items.push({
+//             item_id   : $(cols[0]).text(),
+//             item_name : $(cols[1]).text(),
+//             unit_price: parseFloat($(cols[2]).text()),
+//             qty       : parseInt($(cols[3]).text()),
+//             sub_total : parseFloat($(cols[4]).text()),
+//         });
+//     });
+//
+//     // current date and timestamp
+//     let now       = new Date();
+//     let date      = now.toLocaleDateString();
+//     let timestamp = now.toLocaleString();
+//
+//     // order object
+//     let order = {
+//         order_id      : order_id,
+//         customer_name : customer_name,
+//         grand_total   : grand_total,
+//         received      : received,
+//         balance       : received - grand_total,
+//         date          : date,
+//         timestamp     : timestamp,
+//     };
+//
+//     // order items object
+//     let order_items_record = {
+//         order_id    : order_id,
+//         items       : order_items,
+//     };
+//
+//     // save to arrays
+//     order_db_array.push(order);
+//     order_item_db_array.push(order_items_record);
+//
+//     // show in order history
+//     addToOrderHistory(order, order_items);
+//
+//     // reset after placing
+//     $('#order_reset_btn').trigger('click');
+//
+//     alert(`Order #${order_id} placed successfully!`);
+// })
+// step 1 — validate and show confirmation modal
 $('#order_place_btn').on('click', function () {
-    let order_id       = $('#order_id_input').val();
-    let customer_name  = $('#order_customer_name_input').val();
-    let grand_total    = getGrandTotal();
-    let received       = parseFloat($('#received_amount_input').val()) || 0;
+    let order_id      = $('#order_id_input').val();
+    let customer_name = $('#order_customer_name_input').val();
+    let grand_total   = getGrandTotal();
+    let received      = parseFloat($('#received_amount_input').val()) || 0;
 
-    // validations
     if (order_id == '')      return alert('Order ID Missing');
     if (customer_name == '') return alert('Customer Name Missing');
     if ($('#cart_tbody tr').length == 0) return alert('Cart is Empty');
     if (received < grand_total) return alert('Insufficient Amount');
 
-    // build order items list from cart table
+    let now     = new Date();
+    let date    = now.toLocaleDateString();
+    let balance = received - grand_total;
+
+    // populate modal with order details
+    $('#confirm_order_id').text(order_id);
+    $('#confirm_customer_name').text(customer_name);
+    $('#confirm_date').text(date);
+    $('#confirm_grand_total').text(grand_total);
+    $('#confirm_received').text(received);
+    $('#confirm_balance').text(balance);
+
+    // populate items table in modal
+    $('#confirm_items_tbody').empty();
+    $('#cart_tbody tr').each(function () {
+        $('#confirm_items_tbody').append($(this).clone());
+    });
+
+    // show modal
+    new bootstrap.Modal($('#order_confirm_modal')[0]).show();
+})
+
+// step 2 — confirmed, now actually save
+$('#confirm_place_btn').on('click', function () {
+    let order_id      = $('#confirm_order_id').text();
+    let customer_name = $('#confirm_customer_name').text();
+    let grand_total   = parseFloat($('#confirm_grand_total').text());
+    let received      = parseFloat($('#confirm_received').text());
+    let balance       = parseFloat($('#confirm_balance').text());
+    let now           = new Date();
+    let date          = now.toLocaleDateString();
+    let timestamp     = now.toLocaleString();
+
+    // build order items from cart
     let order_items = [];
     $('#cart_tbody tr').each(function () {
         let cols = $(this).find('td');
@@ -184,36 +276,22 @@ $('#order_place_btn').on('click', function () {
         });
     });
 
-    // current date and timestamp
-    let now       = new Date();
-    let date      = now.toLocaleDateString();
-    let timestamp = now.toLocaleString();
-
-    // order object
     let order = {
-        order_id      : order_id,
-        customer_name : customer_name,
-        grand_total   : grand_total,
-        received      : received,
-        balance       : received - grand_total,
-        date          : date,
-        timestamp     : timestamp,
+        order_id, customer_name, grand_total,
+        received, balance, date, timestamp
     };
 
-    // order items object
-    let order_items_record = {
-        order_id    : order_id,
-        items       : order_items,
-    };
+    let order_items_record = { order_id, items: order_items };
 
-    // save to arrays
     order_db_array.push(order);
     order_item_db_array.push(order_items_record);
 
-    // show in order history
     addToOrderHistory(order, order_items);
 
-    // reset after placing
+    // close modal
+    bootstrap.Modal.getInstance($('#order_confirm_modal')[0]).hide();
+
+    // reset form
     $('#order_reset_btn').trigger('click');
 
     alert(`Order #${order_id} placed successfully!`);
